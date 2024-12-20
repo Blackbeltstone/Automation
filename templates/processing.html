@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Processing{% endblock %}
+
+{% block content %}
+<h1>Processing</h1>
+
+{% if files_by_project %}
+    <ul>
+        {% for project, sites in files_by_project.items() %}
+            <li>
+                <strong>{{ project }}</strong>
+                
+                <!-- Process Entire Project Button -->
+                <form action="/process_project/" method="post" style="margin-top: 10px;">
+                    <input type="hidden" name="project_name" value="{{ project }}">
+                    <button type="submit">Process Project</button>
+                </form>
+
+                <details>
+                    <summary>View Sites</summary>
+                    {% if sites %}
+                        <ul>
+                            {% for site, files in sites.items() %}
+                                <li>
+                                    <strong>{{ site }}</strong>
+                                    <details>
+                                        <summary>View Files</summary>
+                                        {% if files %}
+                                            <ul>
+                                                {% for file in files %}
+                                                    <li>
+                                                        {{ file.filename }}
+                                                        <!-- Process File Button -->
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% else %}
+                                            <p>No files in this site.</p>
+                                        {% endif %}
+                                    </details>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No sites available for this project.</p>
+                    {% endif %}
+                </details>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No files are currently being processed.</p>
+{% endif %}
+{% endblock %}

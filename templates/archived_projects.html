@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block title %}Archived Projects{% endblock %}
+
+{% block content %}
+<h1>Archived Projects</h1>
+<ul>
+    {% for project in archived_projects %}
+        <li>
+            <strong>Project Number:</strong> {{ project.project_number }}<br>
+            <strong>Date:</strong> {{ project.date }}<br>
+            <strong>Crew Initials:</strong> {{ project.crew_initials }}<br>
+            <strong>Status:</strong> {{ project.status }}
+        </li>
+    {% endfor %}
+</ul>
+<a href="/">Return to Projects</a>
+{% endblock %}

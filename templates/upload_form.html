@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Files{% endblock %}
+
+{% block content %}
+<h1>Upload Files</h1>
+<form action="/upload/" method="post" enctype="multipart/form-data">
+    <label for="project_number">Project Number:</label><br>
+    <input type="text" id="project_number" name="project_number" required><br><br>
+
+    <label for="collection_date">Collection Date (YYYYMMDD):</label><br>
+    <input type="text" id="collection_date" name="collection_date" required><br><br>
+
+    <label for="crew_initials">Crew Initials:</label><br>
+    <input type="text" id="crew_initials" name="crew_initials" required><br><br>
+
+    <label for="project_location">Project Location:</label><br>
+    <input type="text" id="project_location" name="project_location" required><br><br>
+
+    <label for="structure_id">Structure ID:</label><br>
+    <input type="text" id="structure_id" name="structure_id" required><br><br>
+
+    <label for="files">Select Files:</label><br>
+    <input type="file" id="files" name="files" multiple required><br><br>
+
+    <input type="submit" value="Upload">
+</form>
+{% endblock %}

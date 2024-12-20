@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Structures{% endblock %}
+
+{% block content %}
+<h1>Structures for Project: {{ project.project_number }}</h1>
+<ul>
+    {% for structure in structures %}
+        <li>
+            <strong>{{ structure.structure_id }}</strong> - {{ structure.project_location }} ({{ structure.collection_date }})
+            <a href="/structures/{{ structure.id }}/files">View Files</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="/projects/">Back to Projects</a>
+{% endblock %}

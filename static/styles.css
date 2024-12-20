@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    margin-top: 60px; /* Add margin to account for the navbar height */
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"], input[type="file"], input[type="submit"] {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+a {
+    text-decoration: none;
+    color: #0066cc;
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    background-color: #333; /* Dark background */
+    overflow: hidden; /* Clear floats */
+    position: fixed; /* Stays at the top */
+    top: 0; /* Align to the top */
+    width: 100%; /* Full-width navbar */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.navbar a {
+    float: left; /* Align links horizontally */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    padding: 14px 16px; /* Padding around links */
+    text-decoration: none; /* Remove underline */
+}
+
+.navbar a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+    color: black; /* Black text on hover */
+}
+
+/* Style for details and summary */
+details {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+}
+
+summary::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+ul {
+    margin-top: 10px;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: #4CAF50; /* Adjust color as needed */
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/* Optional: Add arrow indicators to dropdown buttons */
+.dropbtn::after {
+    content: ' ▼';
+    font-size: 12px;
+}
+
+/* ...existing code... */
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Optionally, adjust the margin of the project list */
+#projectList {
+    list-style-type: none;
+    padding: 0;
+}

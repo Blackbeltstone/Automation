@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Processed Projects{% endblock %}
+
+{% block content %}
+<h1>Processed Projects</h1>
+
+{% if projects %}
+    <ul>
+        {% for project, files in projects.items() %}
+            <li>
+                <strong>{{ project }}</strong>
+                {% if files %}
+                    <ul>
+                        {% for file in files %}
+                            <li><a href="/data/04_Processed/{{ project }}/{{ file }}" target="_blank">{{ file }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No files found in this project.</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No processed projects available.</p>
+{% endif %}
+{% endblock %}

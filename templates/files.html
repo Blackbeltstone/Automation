@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Files{% endblock %}
+
+{% block content %}
+<h1>Files for Structure: {{ structure['structure_id'] }}</h1>
+<ul>
+{% for file in files %}
+    <li>
+        <a href="/data/{{ file['path'] }}">{{ file['filename'] }}</a>
+    </li>
+{% endfor %}
+
+<a href="/projects/{{ structure['project_id'] }}/structures">Back to Structures</a>
+</ul>
+{% endblock %}

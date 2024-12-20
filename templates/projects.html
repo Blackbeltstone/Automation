@@ -1,0 +1,54 @@
+
+<!-- filepath: /d:/Automation/templates/projects.html -->
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<h1>Projects</h1>
+
+<!-- Files by Step -->
+<h3>Files by Step</h3>
+{% if files_by_step %}
+    {% for step, upper_dirs in files_by_step.items() %}
+        <details>
+            <summary>{{ step }}</summary>
+            {% if upper_dirs %}
+                {% for upper_dir, lower_dirs in upper_dirs.items() %}
+                    <div class="upper-directory">
+                        <strong>{{ upper_dir }}</strong>
+                        {% if lower_dirs %}
+                            <ul>
+                                {% for lower_dir, files in lower_dirs.items() %}
+                                    <li>
+                                        <details>
+                                            <summary>{{ lower_dir }}</summary>
+                                            {% if files %}
+                                                <ul>
+                                                    {% for file in files %}
+                                                        <li>
+                                                            <a href="/data/{{ file.path }}" target="_blank">{{ file.filename }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <p>No files in this directory.</p>
+                                            {% endif %}
+                                        </details>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No lower directories available.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No upper directories available.</p>
+            {% endif %}
+        </details>
+    {% endfor %}
+{% else %}
+    <p>No steps available.</p>
+{% endif %}
+{% endblock %}

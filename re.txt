@@ -1,0 +1,8 @@
+pip install python-multipart
+pip install fastapi
+pip install uvicorn
+pip install jinja2
+uvicorn app:app --reload 
+powershell.exe -noprofile -executionpolicy bypass -file .\script.ps1
+
+PIL for exc

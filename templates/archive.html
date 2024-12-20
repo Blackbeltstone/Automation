@@ -1,0 +1,73 @@
+<!-- filepath: /d:/Automation/templates/archive.html -->
+{% extends "base.html" %}
+
+{% block title %}Archive{% endblock %}
+
+{% block content %}
+<h1>Archive</h1>
+
+<input type="text" id="searchInput" placeholder="Search Projects..." />
+
+{% if files_by_project %}
+    <ul id="projectList">
+        {% for project_name, sites in files_by_project.items() %}
+            <li class="project-item">
+                <strong>{{ project_name }}</strong>
+                <form action="/move_to_processing/" method="post" style="display:inline; margin-left: 10px;">
+                    <input type="hidden" name="directory" value="{{ project_name }}">
+                    <button type="submit">Move to Processing</button>
+                </form>
+                <form action="/copy_to_processing/" method="post" style="display:inline; margin-left: 10px;">
+                    <input type="hidden" name="directory" value="{{ project_name }}">
+                    <button type="submit">Copy to Processing</button>
+                </form>
+                <details>
+                    <summary>View Files/Sites</summary>
+                    {% if sites %}
+                        {% for site_name, files in sites.items() %}
+                            {% if site_name %}
+                                <strong>{{ site_name }}</strong>
+                            {% else %}
+                                <strong>Files</strong>
+                            {% endif %}
+                            {% if files %}
+                                <ul>
+                                    {% for file in files %}
+                                        <li>
+                                            <a href="/data/{{ file.path }}" target="_blank">{{ file.filename }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No files in this section.</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>No files or sites available for this project.</p>
+                    {% endif %}
+                </details>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No archived projects available.</p>
+{% endif %}
+
+<script>
+    // JavaScript for client-side search functionality
+    const searchInput = document.getElementById('searchInput');
+    const projectList = document.getElementById('projectList');
+    searchInput.addEventListener('input', function () {
+        const filter = searchInput.value.toLowerCase();
+        const projects = projectList.getElementsByClassName('project-item');
+        for (let i = 0; i < projects.length; i++) {
+            const projectName = projects[i].getElementsByTagName('strong')[0].textContent.toLowerCase();
+            if (filter === '' || projectName.includes(filter)) {
+                projects[i].style.display = '';
+            } else {
+                projects[i].style.display = 'none';
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Photos{% endblock %}
+
+{% block content %}
+<h1>Photos for Structure ID: {{ structure_id }} on {{ collection_date }}</h1>
+<ul>
+    {% for file in files %}
+        <li>
+            <a href="/data/{{ file['path'] }}" target="_blank">{{ file['filename'] }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="/structures/{{ structure_id }}/files">Back to Files</a>
+{% endblock %}

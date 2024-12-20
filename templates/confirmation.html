@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Action Confirmation{% endblock %}
+
+{% block content %}
+<h1>Action Confirmation</h1>
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+{% if project_folder %}
+    <p>Your project has been archived to: {{ project_folder }}</p>
+{% endif %}
+{% if uploaded_files %}
+    <h2>Uploaded Files</h2>
+    <ul>
+        {% for file in uploaded_files %}
+            <li><a href="/data/{{ file }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No files were uploaded.</p>
+{% endif %}
+
+
+<a href="/">Return to Projects</a>
+{% endblock %}
